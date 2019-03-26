@@ -11,4 +11,8 @@ class dosen extends Model
     protected $fillable = [
         'nip','namadosen'
     ];
+
+    public function studentWali(){
+        return $this->hasMany('App\Student','nipdosenwali','nip');
+    }
 }

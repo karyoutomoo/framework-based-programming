@@ -20,7 +20,7 @@
                             <td colspan="2"><b>MENU</b></td></tr></thead>
                             @foreach($student as $m)
                             <tr><td>{{ $m->nrp }}</td><td>{{ $m->nama }}</td>
-                                <td>{{ $m->namadosen }}</td><td align="center" width="30px">
+                                <td>{{ $m->dosenWali->namadosen }}</td><td align="center" width="30px">
                                     <a href="/students/{{$m->nrp}}/edit" class="btn btn-warning btn-sm" role="button"><i class="fa fa-pencil-square"></i> Edit</a>
                                 </td><td align="center" width="30px">
                                     {!! Form::open(array('route' => array('students.destroy', $m->nrp),
@@ -28,7 +28,7 @@
                                     <button class='btn btn-sm btn-danger delete-btn' type='submit'>
                                         <i class='fa fa-times-circle'></i> Delete </button>
                                     {!! Form::close() !!} </td> </tr>
-                        @endforeach
+                            @endforeach
                     </table>
                 </div>
             @else

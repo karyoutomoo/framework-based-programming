@@ -11,4 +11,8 @@ class Student extends Model
     protected $fillable = [
         'nrp','nama','nipdosenwali'
     ];
+
+    public function dosenWali(){
+        return $this->belongsTo('App\Dosen','nipdosenwali','nip');
+    }
 }
