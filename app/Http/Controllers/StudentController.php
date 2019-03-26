@@ -16,7 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student = Student::all();
+        $query = 'SELECT * FROM students LEFT JOIN dosens ON students.nipdosenwali = dosens.nip';
+        $student = DB::select($query);
         return view ('students.index',compact('student'));
     }
 
