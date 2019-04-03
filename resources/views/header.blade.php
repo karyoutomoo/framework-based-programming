@@ -19,6 +19,8 @@
                         &nbsp;&nbsp;Mahasiswa</a></li>
                 <li><a href="{{ url('/dosens') }}"><i class="fa fa-university"></i>
                         &nbsp;&nbsp;Dosen</a></li>
+                <li><a href="{{ url('/krs') }}"><i class="fa fa-book"></i>
+                        &nbsp;&nbsp;KRS</a></li>
             </ul>
         </div>
     </div>

@@ -15,4 +15,8 @@ class Student extends Model
     public function dosenWali(){
         return $this->belongsTo('App\Dosen','nipdosenwali','nip');
     }
+
+    public function mhsMengambil(){
+        return $this->hasMany('App\Mengambil','nrpmhs','nrp');
+    }
 }

@@ -15,4 +15,8 @@ class dosen extends Model
     public function studentWali(){
         return $this->hasMany('App\Student','nipdosenwali','nip');
     }
+
+    public function mengajar(){
+        return $this->hasMany('App\Mengajar','nipdosenwali','nip');
+    }
 }

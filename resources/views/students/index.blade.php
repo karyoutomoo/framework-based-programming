@@ -14,13 +14,22 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped
           table-hover table-condensed tfix">
-                        <thead align="center"><tr>
-                            <td><b>NRP</b></td><td><b>Nama Mahasiswa</b></td>
+                        <thead align="center">
+                        <tr>
+                            <td><b>NRP</b></td>
+                            <td><b>Nama Mahasiswa</b></td>
                             <td><b>Nama Dosen Wali</b></td>
-                            <td colspan="2"><b>MENU</b></td></tr></thead>
+                            <td><b>Mengambil</b></td>
+                            <td colspan="2"><b>MENU</b></td>
+                        </tr>
+                        </thead>
                             @foreach($student as $m)
-                            <tr><td>{{ $m->nrp }}</td><td>{{ $m->nama }}</td>
-                                <td>{{ $m->namadosen }}</td><td align="center" width="30px">
+                            <tr>
+                                <td>{{ $m->nrp }}</td>
+                                <td>{{ $m->nama }}</td>
+                                <td>{{ $m->namadosen }}</td>
+                                <td>{{ $m->namadosen }}</td>
+                                <td align="center" width="30px">
                                     <a href="/students/{{$m->nrp}}/edit" class="btn btn-warning btn-sm" role="button"><i class="fa fa-pencil-square"></i> Edit</a>
                                 </td><td align="center" width="30px">
                                     {!! Form::open(array('route' => array('students.destroy', $m->nrp),
