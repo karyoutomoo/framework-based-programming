@@ -12,7 +12,7 @@
                         <a href="#" class="list-group-item active">
                             <i class="fa fa-cogs"></i> MENU MAHASISWA
                         </a>
-                        <a href="/mhs" class="list-group-item">
+                        <a href="/students" class="list-group-item">
                             <i class="fa fa-refresh"></i> Tampilkan Semua</a>
                         <a href="/" class="list-group-item">
                             <i class="fa fa-home"></i> Home</a>

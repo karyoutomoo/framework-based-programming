@@ -16,8 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $query = 'SELECT * FROM students LEFT JOIN dosens ON students.nipdosenwali = dosens.nip';
-        $student = DB::select($query);
+        $student = DB::table('students')->join('dosens','students.nipdosenwali','=','dosens.nip')->get();
         return view ('students.index',compact('student'));
     }
 
@@ -81,7 +80,6 @@ class StudentController extends Controller
         $mhsnya = Student::findorfail($id);
         $mhsnya->update($request->all());
         return redirect('/students');
-
     }
 
     /**

@@ -9,7 +9,7 @@ class matakuliah extends Model
     protected $primaryKey = 'kode_mk';
     public $incrementing = false;
     protected $fillable = [
-        'kode_mk','namamatkul','sks'
+        'kode_mk','nama_matkul','sks'
     ];
 
     public function mengajarMatkul(){

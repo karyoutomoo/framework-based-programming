@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\dosen;
+use App\matakuliah;
+use App\Mengajar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DosenController extends Controller
 {
@@ -14,7 +17,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $dsn = Dosen::all();
+        $dsn = dosen::all();
         return view('dosens.index',compact('dsn'));
     }
 

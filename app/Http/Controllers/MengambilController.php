@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\dosen;
+use App\matakuliah;
+use App\Mengajar;
 use App\Mengambil;
+use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MengambilController extends Controller
 {
@@ -14,7 +19,9 @@ class MengambilController extends Controller
      */
     public function index()
     {
-        //
+        $query = 'SELECT id_krs,nama, nrp, nama_matkul, sks, kelas, namadosen, nilai FROM `mengambils`,`mengajars`,`students`,`matakuliahs`,`dosens` WHERE students.nrp=mengambils.nrpmhs and mengambils.kelasdiambil = mengajars.id_kelas and mengajars.kode_matkul=matakuliahs.kode_mk and mengajars.nipdosenwali=dosens.nip';
+        $ngambil = DB::select($query);
+        return view('mengambils.index',compact('ngambil'));
     }
 
     /**
@@ -24,7 +31,10 @@ class MengambilController extends Controller
      */
     public function create()
     {
-        //
+        $ngambil = Mengambil::all();
+        $ngajar = Mengajar::pluck('id_kelas','id_kelas');
+        $mhs = Student::pluck('nama','nrp');
+        return view('mengambils.create',compact('mhs','ngajar','ngambil'));
     }
 
     /**
@@ -35,7 +45,8 @@ class MengambilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Mengambil::create($request->all());
+        return redirect('/mengambils');
     }
 
     /**
@@ -55,9 +66,12 @@ class MengambilController extends Controller
      * @param  \App\Mengambil  $mengambil
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mengambil $mengambil)
+    public function edit($id)
     {
-        //
+        $ambil    = Mengambil::findorfail($id);
+        $ngajar = Mengajar::pluck('id_kelas','id_kelas');
+        $mhs = Student::pluck('nama','nrp');
+        return view('mengambils.edit',compact('ambil','ngajar','mhs'));
     }
 
     /**
@@ -67,9 +81,11 @@ class MengambilController extends Controller
      * @param  \App\Mengambil  $mengambil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mengambil $mengambil)
+    public function update(Request $request, $id)
     {
-        //
+        $mengambil = Mengambil::findorfail($id);
+        $mengambil->update($request->all());
+        return redirect('/mengambils');
     }
 
     /**
@@ -80,6 +96,7 @@ class MengambilController extends Controller
      */
     public function destroy(Mengambil $mengambil)
     {
-        //
+        $mengambil->delete();
+        return redirect('/mengambils');
     }
 }

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\dosen;
+use App\matakuliah;
 use App\Mengajar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MengajarController extends Controller
 {
@@ -14,7 +17,9 @@ class MengajarController extends Controller
      */
     public function index()
     {
-        //
+        $query = 'SELECT nama_matkul,namadosen,id_kelas,kelas FROM `mengajars`,`dosens`,`matakuliahs` WHERE mengajars.nipdosenwali = dosens.nip AND mengajars.kode_matkul = matakuliahs.kode_mk';
+        $dsn = DB::select($query);
+        return view('mengajars.index',compact('dsn'));
     }
 
     /**
@@ -24,7 +29,9 @@ class MengajarController extends Controller
      */
     public function create()
     {
-        //
+        $dsn = dosen::pluck('namadosen','nip');
+        $matk = matakuliah::pluck('nama_matkul','kode_mk');
+        return view('mengajars.create',compact('dsn','matk'));
     }
 
     /**
@@ -35,7 +42,8 @@ class MengajarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Mengajar::create($request->all());
+        return redirect('/mengajars');
     }
 
     /**
@@ -55,9 +63,12 @@ class MengajarController extends Controller
      * @param  \App\Mengajar  $mengajar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mengajar $mengajar)
+    public function edit($id)
     {
-        //
+        $ngajar    = Mengajar::findorfail($id);
+        $dsn = dosen::pluck('namadosen','nip');
+        $matk = matakuliah::pluck('nama_matkul','kode_mk');
+        return view('mengajars.edit',compact('ngajar','dsn','matk'));
     }
 
     /**
@@ -67,9 +78,11 @@ class MengajarController extends Controller
      * @param  \App\Mengajar  $mengajar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mengajar $mengajar)
+    public function update(Request $request, $id)
     {
-        //
+        $mengajar = Mengajar::findorfail($id);
+        $mengajar->update($request->all());
+        return redirect('/mengajars');
     }
 
     /**
@@ -80,6 +93,7 @@ class MengajarController extends Controller
      */
     public function destroy(Mengajar $mengajar)
     {
-        //
+        $mengajar->delete();
+        return redirect('/mengajars');
     }
 }

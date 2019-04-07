@@ -14,7 +14,8 @@ class MatakuliahController extends Controller
      */
     public function index()
     {
-        //
+        $matakuliah = matakuliah::all();
+        return view('matakuliahs.index',compact('matakuliah'));
     }
 
     /**
@@ -24,7 +25,7 @@ class MatakuliahController extends Controller
      */
     public function create()
     {
-        //
+        return view('matakuliahs.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class MatakuliahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        matakuliah::create($request->all());
+        return redirect('/matakuliahs');
     }
 
     /**
@@ -57,7 +59,8 @@ class MatakuliahController extends Controller
      */
     public function edit(matakuliah $matakuliah)
     {
-        //
+        $m = $matakuliah;
+        return view ('matakuliahs.edit',compact('m'));
     }
 
     /**
@@ -69,7 +72,8 @@ class MatakuliahController extends Controller
      */
     public function update(Request $request, matakuliah $matakuliah)
     {
-        //
+        $matakuliah->update($request->all());
+        return redirect('/matakuliahs');
     }
 
     /**
@@ -80,6 +84,7 @@ class MatakuliahController extends Controller
      */
     public function destroy(matakuliah $matakuliah)
     {
-        //
+        $matakuliah->delete();
+        return redirect('/matakuliahs');
     }
 }

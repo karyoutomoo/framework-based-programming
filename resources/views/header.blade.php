@@ -17,10 +17,16 @@
                         &nbsp;&nbsp;Home</a></li>
                 <li><a href="{{ url('/students') }}"><i class="fa fa-user"></i>
                         &nbsp;&nbsp;Mahasiswa</a></li>
+                <li><a href="{{ url('/mengambils') }}"><i class="fa fa-calendar-check-o"></i>
+                        &nbsp;&nbsp;KRS</a></li>
                 <li><a href="{{ url('/dosens') }}"><i class="fa fa-university"></i>
                         &nbsp;&nbsp;Dosen</a></li>
-                <li><a href="{{ url('/krs') }}"><i class="fa fa-book"></i>
-                        &nbsp;&nbsp;KRS</a></li>
+                <li><a href="{{ url('/mengajars') }}"><i class="fa fa-group"></i>
+                        &nbsp;&nbsp;Daftar Kelas</a>
+                </li>
+                <li><a href="{{ url('matakuliahs') }}"><i class="fa fa-book"></i>
+                        &nbsp;&nbsp;Mata Kuliah</a>
+                </li>
             </ul>
         </div>
     </div>
