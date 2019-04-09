@@ -16,7 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student = DB::table('students')->join('dosens','students.nipdosenwali','=','dosens.nip')->get();
+        $student = DB::table('students')->
+        join('dosens','students.nipdosenwali','=','dosens.nip')->get();
         return view ('students.index',compact('student'));
     }
 

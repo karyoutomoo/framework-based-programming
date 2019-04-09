@@ -17,7 +17,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $dsn = dosen::all();
+        $dsn = DB::table('dosens')->simplePaginate(15);
         return view('dosens.index',compact('dsn'));
     }
 

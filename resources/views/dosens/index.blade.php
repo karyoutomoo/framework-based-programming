@@ -47,7 +47,9 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </table></div>
+                    </table>
+                    {{ $dsn->links() }}
+                </div>
             @else
                 <div class="alert alert-warning">
                     <i class="fa fa-exclamation-triangle"></i> Data Dosen tidak Ada
